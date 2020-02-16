@@ -7,8 +7,21 @@
 //
 
 import Foundation
-/**
-  Swift 将全局第一句可执行代码作为程序入口
- */
-print("Hello, World!")
+
+enum Direction {
+    case north, south, east, west
+}
+let d = Direction.north
+
+switch d {
+case .north:
+    print("north")
+case .south:
+    print("south")
+case .east:
+    print("ease")
+case .west:
+    print("west")
+}
+
 
