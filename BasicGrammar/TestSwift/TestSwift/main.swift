@@ -8,9 +8,43 @@
 
 import Foundation
 
-func testValueType() {
-    
+struct Circle {
+    var radius: Int
+    var diameter: Int {
+        set {
+            radius = newValue / 2
+        }
+        get {
+            radius * 2
+        }
+    }
 }
+
+var c = Circle(radius: 10)
+
+c.radius = 11
+c.diameter = 12 
+
+
+
+
+typealias Fn = (Int) -> Int
+
+func getFn() -> Fn {
+    
+    var num = 0
+    func plus(_ i: Int) -> Int {
+        num += i
+        return num
+    }
+    return plus
+}
+
+//var f1 = getFn()
+//print(f1(1))
+//print(f1(2))
+//print(f1(3))
+//var f2 = getFn()
 
 func testClassAndStruct() {
     class Size {
@@ -27,8 +61,6 @@ func testClassAndStruct() {
     var point = Point()
     
 }
-
-testClassAndStruct()
 
 func testClass() {
     class Point {
