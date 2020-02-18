@@ -8,22 +8,46 @@
 
 import Foundation
 
-struct Circle {
-    var radius: Int
-    var diameter: Int {
-        set {
-            radius = newValue / 2
-        }
-        get {
-            radius * 2
-        }
+
+
+class Person {
+    var age: Int
+    init(age: Int) {
+        self.age = age
+    }
+    convenience init() {
+        self.init(age: 0)
     }
 }
 
-var c = Circle(radius: 10)
+class Student: Person {
+//    init(score: Int, age: Int) {
+//        self.score = score
+//        super.init(age: age)
+//    }
+     convenience init() {
+        self.init(age: 0)
 
-c.radius = 11
-c.diameter = 12 
+    }
+}
+
+
+//struct Circle {
+//    var radius: Int
+//    var diameter: Int {
+//        set {
+//            radius = newValue / 2
+//        }
+//        get {
+//            radius * 2
+//        }
+//    }
+//}
+
+//var c = Circle(radius: 10)
+//
+//c.radius = 11
+//c.diameter = 12
 
 
 
