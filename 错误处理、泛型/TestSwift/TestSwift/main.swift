@@ -8,33 +8,138 @@
 
 import Foundation
 
-
-protocol Runnable {
-    associatedtype Speed
-    var speed: Speed { get }
+protocol TestProtocol {
+    func test1()
 }
 
-class Person: Runnable {
-    var speed: Double { 0.0 }
+extension TestProtocol {
+    func test1()  {
+        print("TestProtocol test1")
+    }
+    func test2() {
+        print("TestProtocol test2")
+    }
+}
+class TestClass: TestProtocol {
+    func test1()  {
+        print("TestClass test1")
+    }
+    func test2() {
+        print("TestClass test2")
+    }
+    
+    func test3() {
+//        print("TestClass test3")
+        debugPrint("TestClass test3")
+    }
 }
 
-class Car: Runnable {
-    var speed: Int { 0 }
-}
+var cls = TestClass()
+cls.test1()
+cls.test2()
+cls.test3()
 
-/**
- 不透明类型
- 
- 返回类型指定 为 Runnable，而不是Car，目的是让外界只能调用协议中的方法，Car内部的方法就无法调用
- */
-func get(_ type: Int) -> some Runnable {
-//    if type == 0 {
-//        return Person()
+//infix operator +- : PlusMinusPrecedence
+//precedencegroup PlusMinusPrecedence {
+//    associativity: left // 结合性
+//    higherThan: AdditionPrecedence // 比谁的优先级高
+//    lowerThan: MultiplicationPrecedence // 比谁的优先级低
+//    assignment: true // 在可选链中拥有跟赋值运算符一样的优先级
+//}
+//
+//struct Point {
+//    var x = 0, y = 0
+//
+//    static func +-(p1: Point, p2: Point) -> Point {
+//        Point(x: p1.x + p2.x, y: p1.y - p2.y)
 //    }
-    return Car()
-}
+//}
+//var p1 = Point(x: 10, y: 20)
+//var p2 = Point(x: 11, y: 22)
+//
+//var p3 = p1 +- p2 +- p1
+//print(p3.x, p3.y)
+//
+//class Person {
+//    var age = 0
+//    var point: Point = Point()
+//
+//}
+//
+//var p: Person? = Person()
+//// 在可选链中拥有跟赋值运算符一样的优先级
+//p?.point +- Point(x: 10, y: 10)
 
-var r1 = get(0)
+//enum Answer: Equatable {
+//    case wrong(Int)
+//    case right
+//}
+//
+//let a1 = Answer.wrong(10)
+//let a2 = Answer.right
+//
+//print(a1 == a2)
+//struct Point {
+//    var x = 0, y = 0
+//    static func +(p1: Point, p2: Point) -> Point {
+//        Point(x: p1.x + p2.x, y: p1.y + p2.y)
+//    }
+//    static func +=(p1: inout Point, p2: Point) {
+//        p1 = p1 + p2
+//    }
+//    static prefix func ++(p: inout Point) -> Point {
+//        p += Point(x: 1, y: 1)
+//        return p
+//    }
+//    static postfix func ++(p: inout Point) -> Point {
+//        let tmp = p;
+//        p += Point(x: 1, y: 1)
+//        return tmp
+//    }
+//}
+//
+//
+//
+//var p1 = Point(x: 10, y: 20)
+//var p2 = Point(x: 11, y: 22)
+//
+//var p3 = p1 + p2
+//p3 += Point(x: 4, y: 3)
+//print(p3++)
+//print(p3.x, p3.y)
+
+//var v1 = UInt8.max
+//
+//var v2 = v1 &+ 1
+//
+//print(v2)
+
+//protocol Runnable {
+//    associatedtype Speed
+//    var speed: Speed { get }
+//}
+//
+//class Person: Runnable {
+//    var speed: Double { 0.0 }
+//}
+//
+//class Car: Runnable {
+//    var speed: Int { 0 }
+//}
+//
+///**
+// 不透明类型
+//
+// 返回类型指定 为 Runnable，而不是Car，目的是让外界只能调用协议中的方法，Car内部的方法就无法调用
+// */
+//func get(_ type: Int) -> some Runnable {
+////    if type == 0 {
+////        return Person()
+////    }
+//    return Car()
+//}
+//
+//var r1 = get(0)
 
 //protocol Stackable {
 //    associatedtype Element
